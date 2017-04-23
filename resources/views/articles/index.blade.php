@@ -18,10 +18,7 @@
 							class="btn btn-default">TH</a>
 			</li>
 	</ul>
-		@if(Auth::check())
-				for {{ Auth::user()->name }}
-		@endif
-		@foreach($articles as $article)
+
 		<div class="panel panel-default">
 			<div class="panel-heading">
 
