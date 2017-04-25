@@ -33,7 +33,7 @@ Route::get('hello', 'HelloController@index');
 
 Route::resource('articles','ArticlesController');
 
-Rount::get('lang/{lang}', function($lang){
+Route::get('lang/{lang}', function($lang){
 		$available = ['en', 'th'];
 		Session::put('locale',
 						in_array($lang, $available)?

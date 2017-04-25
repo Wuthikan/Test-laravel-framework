@@ -5,9 +5,10 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	</head>
 	<body>
+	<div class="page-header" >
 		<ul class="nav navbar-nav navbar-right">
 			<li>
-					<a href="{{ url('articles/create') }}">New Article</a>
+					<a href="{{ url('articles/create') }}"	{{ trans('site.add_article') }}</a>
 			</li>
 			<li>
 					<a href="{{ url('lang/en') }}"
@@ -17,8 +18,17 @@
 					<a href="{{ url('lang/th') }}"
 							class="btn btn-default">TH</a>
 			</li>
-	</ul>
-
+		</ul>
+</div>
+		@if(Auth::check())
+				for {{ Auth::user()->name }}
+		@endif
+<div class="page-header">
+		<h1>
+			{{ trans('site.article') }}
+		</h1>
+</div>
+		@foreach($articles as $article)
 		<div class="panel panel-default">
 			<div class="panel-heading">
 
@@ -34,5 +44,10 @@
 			</div>
 		</div>
 	@endforeach
+
+	{{ $hashed = Crypt::encrypt('secret word') }}
+	{{ $hashed }}
+	{{ $decrypted = Crypt::decrypt($hashed) }}
+	{{ $decrypted }}
 	</body>
 </html>
